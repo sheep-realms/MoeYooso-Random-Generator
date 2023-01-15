@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>萌要素随机生成器 | MoeYooso Random Generator</title>
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/control.css">
+    <script src="js/jquery-1.7.2.min.js"></script>
+    <script src="js/random-debuger.js"></script>
+    <script src="js/moeyooso.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/moegirl.js"></script>
+</head>
+<body>
+    <div id="moeyooso">
+        <div class="moeyooso-page-header">
+            <h1>-「萌要素」随机生成器 -</h1>
+            <div>MoeYooso Random Generator</div>
+        </div>
+        <div class="moeyooso-page page">
+            <div id="moeyooso-table"></div>
+            <div class="moeyooso-bottom">
+                <input type="button" id="moeyooso-reload" class="default" value="重新生成" data-tip="reload">
+                <input type="button" id="moeyooso-output" class="" value="导出要素" data-tip="output">
+            </div>
+        </div>
+        <div class="moeyooso-page-footer page">
+            <textarea id="moeyooso-tag-output" class="code" data-tip="textarea"></textarea>
+            <div class="moeyooso-page-footer-text">
+                <p>
+                    <a href="https://github.com/sheep-realms" target="_blank" rel="noopener noreferrer">Sheep-realms</a> | 
+                    <a href="https://github.com/sheep-realms/MoeYooso-Random-Generator" target="_blank" rel="noopener noreferrer">GitHub</a> | 
+                    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener noreferrer">CC BY-NC-SA 4.0</a>
+                </p>
+            </div>
+        </div>
+        <div id="moeyooso-popup" class="hide"></div>
+    </div>
+    
+    <script>
+        // for (i = 0; i < 500; i++) {
+        //     rd.add(weightedRandom(moeyooso.appearance.hairColor));
+        // }
+        // rd.print();
+        // rd.auto(weightedRandom, moeyooso.appearance.hairColor, 500)
+    </script>
+</body>
+</html>
