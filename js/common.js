@@ -23,7 +23,12 @@ function weightedRandomLoop(options, min = 1, max = 3, outputMin = 1) {
     if (r < outputMin) r = outputMin;
     let values = [];
     for (let i = 0; i < r; i++) {
-        values.push(weightedRandom(options));
+        let wr = weightedRandom(options);
+        if (values.indexOf(wr) == -1) {
+            values.push(wr);
+        } else {
+            i--;
+        }
     }
     return values;
 }
@@ -141,7 +146,7 @@ $(document).ready(function () {
             }
         `);
     
-        $('#moeyooso-tag-output').text(mg.moeyoosoList.join(', '));
+        $('#moeyooso-tag-output').val(mg.moeyoosoList.join(', '));
     }
 
     $(document).on('click', '.moeyooso-tag', function () {

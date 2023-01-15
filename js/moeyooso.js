@@ -1,6 +1,7 @@
 let moeyooso = {
     physique: {
         height: [
+            {name: '50',                weight: 0.0001},
             {name: '60',                weight: 0.0002},
             {name: '70',                weight: 0.0015},
             {name: '80',                weight: 0.0125},
@@ -127,7 +128,10 @@ let moeyooso = {
             {name: '常服',              weight: 5},
             {name: '制服',              weight: 0.75},
             {name: '校服',              weight: 0.15},
-            {name: '水手服',            weight: 3},
+            {name: '水手服',            weight: 1},
+            {name: '短袖水手服',        weight: 2},
+            {name: '长袖水手服',        weight: 2},
+            {name: '无袖水手服',        weight: 0.15},
             {name: '运动服',            weight: 1},
             {name: '体操服',            weight: 0.15},
             {name: '巫女服',            weight: 1},
@@ -140,6 +144,7 @@ let moeyooso = {
             {name: '洛丽塔装',          weight: 1},
             {name: '花魁服',            weight: 0.0005},
             {name: '军服',              weight: 0.125},
+            {name: '警服',              weight: 0.125},
             {name: '婚纱',              weight: 0.75},
             {name: '连衣裙',            weight: 1},
             {name: '无袖连衣裙',        weight: 1},
@@ -173,6 +178,7 @@ let moeyooso = {
             {name: '打底裤',            weight: 0.25},
             {name: '兜裆布',            weight: 0.15},
             {name: '纸尿裤',            weight: 0.0005},
+            {name: '丁字裤',            weight: 0.0005},
             {name: '条纹胖次',          weight: 1},
             {name: '点阵胖次',          weight: 0.5},
             {name: '草莓胖次',          weight: 0.0125},
@@ -234,6 +240,7 @@ let moeyooso = {
             {name: '无袜',              weight: 0.15},
             {name: '船袜',              weight: 0.5},
             {name: '短袜',              weight: 1},
+            {name: '蕾丝花边短袜',      weight: 0.5},
             {name: '三折袜',            weight: 0.75},
             {name: '四分之三袜',        weight: 1},
             {name: '及膝袜',            weight: 1},
@@ -245,6 +252,7 @@ let moeyooso = {
             {name: '泡泡袜',            weight: 0.75},
             {name: '网袜',              weight: 0.15},
             {name: '连体袜',            weight: 0.0125},
+            {name: '宽口袜',            weight: 0.15},
             {name: '踩脚袜',            weight: 0.15},
             {name: '鸳鸯袜',            weight: 0.15},
             {name: '长短袜',            weight: 0.15},
@@ -311,6 +319,7 @@ let moeyooso = {
             {name: '面纱',              weight: 1},
             {name: '花钿',              weight: 1},
             {name: '眼罩',              weight: 1},
+            {name: '单眼罩',            weight: 1},
             {name: '口罩',              weight: 5},
             {name: '鼻环',              weight: 1},
             {name: '舌钉',              weight: 1},
@@ -324,7 +333,8 @@ let moeyooso = {
             {name: '围巾',              weight: 2},
             {name: '项链',              weight: 5},
             {name: '吊坠',              weight: 5},
-            {name: '项圈',              weight: 1}
+            {name: '项圈',              weight: 1},
+            {name: '伊丽莎白圈',        weight: 0.0125}
         ],
         shoulderOrnaments: [
             {name: '_none_',            weight: 50},
@@ -424,6 +434,7 @@ let moeyooso = {
             {name: '优柔寡断',          weight: 0.5},
             {name: '抖S',               weight: 0.25},
             {name: '抖M',               weight: 0.25},
+            {name: 'SM双属性',          weight: 0.25},
             {name: '小恶魔',            weight: 0.25},
             {name: '贱萌',              weight: 0.25},
             {name: '常识人',            weight: 0.25},
