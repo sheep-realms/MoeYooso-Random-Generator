@@ -1,4 +1,4 @@
-let moeyooso = {
+const moeyooso = {
     physique: {
         height: [
             {name: '50',                weight: 0.0001},
@@ -41,7 +41,7 @@ let moeyooso = {
             {name: '黑瞳',              weight: 0.25},
             {name: '红瞳/赤瞳',         weight: 1.25},
             {name: '橙瞳',              weight: 1},
-            {name: '金发/黄瞳',         weight: 2},
+            {name: '金瞳/黄瞳',         weight: 2},
             {name: '绿瞳',              weight: 1.5},
             {name: '蓝瞳/青瞳',         weight: 1.5},
             {name: '紫瞳',              weight: 1},
