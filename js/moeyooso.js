@@ -215,7 +215,7 @@ let moeyooso = {
             {name: '博耐特帽',          weight: 1},
             {name: '头套',              weight: 1},
             {name: '天冠',              weight: 1},
-            {name: '内裤',              weight: 0.0125}
+            {name: '内裤（帽子）',      weight: 0.0125}
         ],
         eyeglass: [
             {name: '_none_',           weight: 50},
