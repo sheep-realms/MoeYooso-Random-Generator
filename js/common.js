@@ -180,6 +180,9 @@ $(document).ready(function () {
             case 'textarea':
                 txt = 'Ctrl + A 全选，Ctrl + C 复制'
                 break;
+
+            default:
+                txt = $(this).data('tip');
         }
         $('#moeyooso-popup').text(txt);
         $('#moeyooso-popup').removeClass('hide');
