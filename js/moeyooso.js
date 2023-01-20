@@ -24,16 +24,184 @@ const moeyooso = {
     },
     appearance: {
         hairColor: [
-            {name: '黑发',              weight: 1.5},
-            {name: '红发/赤发',         weight: 1},
-            {name: '橙发',              weight: 0.75},
-            {name: '金发/黄发',         weight: 2},
-            {name: '绿发',              weight: 1},
-            {name: '蓝发/青发',         weight: 1},
-            {name: '紫发',              weight: 0.75},
-            {name: '粉发',              weight: 2},
-            {name: '棕发/褐发',         weight: 1.5},
-            {name: '银发/灰发/白发',    weight: 2},
+            {
+                name: '黑发',
+                weight: 1.5,
+                wm: {
+                    change: [
+                        {
+                            path: 'appearance.eyeColor',
+                            name: '黑瞳',
+                            value: 0.15
+                        }, {
+                            path: 'appearance.eyeColor',
+                            name: '棕瞳/褐瞳',
+                            value: 7.5
+                        }
+                    ]
+                }
+            },
+            {
+                name: '红发/赤发',
+                weight: 1,
+                wm: {
+                    change: [
+                        {
+                            path: 'appearance.eyeColor',
+                            name: '红瞳/赤瞳',
+                            value: 10
+                        }
+                    ]
+                }
+            },
+            {
+                name: '橙发',
+                weight: 0.75,
+                wm: {
+                    change: [
+                        {
+                            path: 'appearance.eyeColor',
+                            name: '橙瞳',
+                            value: 10
+                        }
+                    ]
+                }
+            },
+            {
+                name: '金发/黄发',
+                weight: 2,
+                wm: {
+                    change: [
+                        {
+                            path: 'appearance.eyeColor',
+                            name: '金瞳/黄瞳',
+                            value: 10
+                        }, {
+                            path: 'appearance.hairstyleBack',
+                            name: '双马尾',
+                            value: 3.5
+                        }, {
+                            path: 'personality.superficial',
+                            name: '傲娇',
+                            value: 5
+                        }
+                    ]
+                }
+            },
+            {
+                name: '绿发',
+                weight: 1,
+                wm: {
+                    change: [
+                        {
+                            path: 'appearance.eyeColor',
+                            name: '绿瞳',
+                            value: 10
+                        }
+                    ]
+                }
+            },
+            {
+                name: '蓝发/青发',
+                weight: 1,
+                wm: {
+                    change: [
+                        {
+                            path: 'appearance.eyeColor',
+                            name: '蓝瞳/青瞳',
+                            value: 10
+                        }
+                    ]
+                }
+            },
+            {
+                name: '紫发',
+                weight: 0.75,
+                wm: {
+                    change: [
+                        {
+                            path: 'appearance.eyeColor',
+                            name: '紫瞳',
+                            value: 15
+                        }
+                    ]
+                }
+            },
+            {
+                name: '粉发',
+                weight: 2,
+                wm: {
+                    change: [
+                        {
+                            path: 'appearance.eyeColor',
+                            name: '粉瞳',
+                            value: 12.5
+                        }, {
+                            path: 'personality.deep',
+                            name: '腹黑',
+                            value: 5
+                        }
+                    ]
+                }
+            },
+            {
+                name: '棕发/褐发',
+                weight: 1.5,
+                wm: {
+                    change: [
+                        {
+                            path: 'appearance.eyeColor',
+                            name: '棕瞳/褐瞳',
+                            value: 10
+                        }, {
+                            path: 'appearance.eyeColor',
+                            name: '橙瞳',
+                            value: 5
+                        }, {
+                            path: 'appearance.eyeColor',
+                            name: '金瞳/黄瞳',
+                            value: 5
+                        }
+                    ]
+                }
+            },
+            {
+                name: '银发/灰发/白发',
+                weight: 2,
+                wm: {
+                    change: [
+                        {
+                            path: 'appearance.eyeColor',
+                            name: '灰瞳/银瞳',
+                            value: 7.5
+                        }, {
+                            path: 'personality.superficial',
+                            name: '三无',
+                            value: 3
+                        }, {
+                            path: 'personality.superficial',
+                            name: '无口',
+                            value: 5
+                        }, {
+                            path: 'personality.superficial',
+                            name: '文静',
+                            value: 3
+                        }, {
+                            path: 'personality.deep',
+                            name: '闷骚',
+                            value: 3
+                        }, {
+                            path: 'personality.deep',
+                            name: '无节操',
+                            value: 2
+                        }, {
+                            path: 'personality.deep',
+                            name: '单纯',
+                            value: 5
+                        }
+                    ]
+                }
+            },
             {name: '双色发',            weight: 0.25},
             {name: '多色发',            weight: 0.125}
         ],
@@ -97,6 +265,7 @@ const moeyooso = {
             {name: '犬耳',              weight: 2},
             {name: '兔耳',              weight: 2.5},
             {name: '兽耳',              weight: 2},
+            {name: '熊耳',              weight: 1},
             {name: '尖耳朵',            weight: 1},
             {name: '机械耳',            weight: 0.25},
             {name: '翅膀型耳朵',        weight: 0.0005},
@@ -378,7 +547,7 @@ const moeyooso = {
             {name: "文静",              weight: 1},
             {name: "率直",              weight: 1},
             {name: "刺头",              weight: 0.25},
-            {name: "KY",                weight: 0.25},
+            {name: "读空气",            weight: 0.25},
             {name: "无铁炮",            weight: 1},
             {name: "暴力",              weight: 0.25},
             {name: "高傲",              weight: 0.5},
@@ -411,12 +580,60 @@ const moeyooso = {
             {name: "情绪化",            weight: 0.5},
             {name: "自来熟",            weight: 1},
             {name: "怕生",              weight: 0.5},
-            {name: "阳角",              weight: 1},
-            {name: "阴角",              weight: 1}
+            {
+                name: '阳角',
+                weight: 1,
+                wm: {
+                    change: [
+                        {
+                            path: 'personality.superficial',
+                            name: '阴角',
+                            value: -10000
+                        }
+                    ]
+                }
+            },
+            {
+                name: '阴角',
+                weight: 1,
+                wm: {
+                    change: [
+                        {
+                            path: 'personality.superficial',
+                            name: '阳角',
+                            value: -10000
+                        }
+                    ]
+                }
+            }
         ],
         deep: [
-            {name: '腹黑',              weight: 0.5},
-            {name: '腹白',              weight: 0.25},
+            {
+                name: '腹黑',
+                weight: 0.5,
+                wm: {
+                    change: [
+                        {
+                            path: 'personality.deep',
+                            name: '腹白',
+                            value: -10000
+                        }
+                    ]
+                }
+            },
+            {
+                name: '腹白',
+                weight: 0.25,
+                wm: {
+                    change: [
+                        {
+                            path: 'personality.deep',
+                            name: '腹黑',
+                            value: -10000
+                        }
+                    ]
+                }
+            },
             {name: '可靠',              weight: 1},
             {name: '热血',              weight: 1},
             {name: '外柔内刚',          weight: 1},
@@ -432,9 +649,57 @@ const moeyooso = {
             {name: '玻璃心',            weight: 0.25},
             {name: '老好人',            weight: 0.5},
             {name: '优柔寡断',          weight: 0.5},
-            {name: '抖S',               weight: 0.25},
-            {name: '抖M',               weight: 0.25},
-            {name: 'SM双属性',          weight: 0.25},
+            {
+                name: '抖S',
+                weight: 0.25,
+                wm: {
+                    change: [
+                        {
+                            path: 'personality.deep',
+                            name: '抖M',
+                            value: -10000
+                        }, {
+                            path: 'personality.deep',
+                            name: 'SM双属性',
+                            value: -10000
+                        }
+                    ]
+                }
+            },
+            {
+                name: '抖M',
+                weight: 0.25,
+                wm: {
+                    change: [
+                        {
+                            path: 'personality.deep',
+                            name: '抖S',
+                            value: -10000
+                        }, {
+                            path: 'personality.deep',
+                            name: 'SM双属性',
+                            value: -10000
+                        }
+                    ]
+                }
+            },
+            {
+                name: 'SM双属性',
+                weight: 0.25,
+                wm: {
+                    change: [
+                        {
+                            path: 'personality.deep',
+                            name: '抖M',
+                            value: -10000
+                        }, {
+                            path: 'personality.deep',
+                            name: '抖S',
+                            value: -10000
+                        }
+                    ]
+                }
+            },
             {name: '小恶魔',            weight: 0.25},
             {name: '贱萌',              weight: 0.25},
             {name: '常识人',            weight: 0.25},
@@ -445,15 +710,51 @@ const moeyooso = {
             {name: '记仇',              weight: 0.25},
             {name: '逆鳞',              weight: 0.25},
             {name: '黑化',              weight: 0.25},
-            {name: '闷骚',              weight: 0.25},
+            {
+                name: '闷骚',
+                weight: 0.25,
+                wm: {
+                    change: [
+                        {
+                            path: 'personality.deep',
+                            name: '单纯',
+                            value: -10000
+                        }
+                    ]
+                }
+            },
             {name: '恋爱脑',            weight: 1},
             {name: '酒品差',            weight: 0.25},
             {name: '反社会人格',        weight: 0.125},
             {name: '恶徳',              weight: 0.25},
             {name: '脱线',              weight: 0.5},
             {name: '早熟',              weight: 0.5},
-            {name: '自负',              weight: 0.5},
-            {name: '自卑',              weight: 0.5},
+            {
+                name: '自负',
+                weight: 0.5,
+                wm: {
+                    change: [
+                        {
+                            path: 'personality.deep',
+                            name: '自卑',
+                            value: -10000
+                        }
+                    ]
+                }
+            },
+            {
+                name: '自卑',
+                weight: 0.5,
+                wm: {
+                    change: [
+                        {
+                            path: 'personality.deep',
+                            name: '自负',
+                            value: -10000
+                        }
+                    ]
+                }
+            },
             {name: '谨慎',              weight: 1},
             {name: '神经质',            weight: 0.25},
             {name: '刀子嘴豆腐心',      weight: 0.5},

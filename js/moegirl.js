@@ -2,6 +2,42 @@ class MoeGirl {
     constructor() {
         this.moeyooso = {};
         this.moeyoosoList = [];
+        this.dbMoeyooso = JSON.parse(JSON.stringify(moeyooso));
+    }
+
+    weightedRandom(options) {
+        var i;
+    
+        var weights = [];
+    
+        for (i = 0; i < options.length; i++)
+            weights[i] = options[i].weight + (weights[i - 1] || 0);
+        
+        var random = Math.random() * weights[weights.length - 1];
+        
+        for (i = 0; i < weights.length; i++)
+            if (weights[i] > random)
+                break;
+
+        options[i]['oldWeight'] = options[i].weight;
+        options[i].weight = 0;
+        
+        return options[i];
+    }
+
+    weightedRandomLoop(options, min = 1, max = 3, outputMin = 1) {
+        let r = ((Math.random() * (max - min)) + min).toFixed(0);
+        if (r < outputMin) r = outputMin;
+        let values = [];
+        for (let i = 0; i < r; i++) {
+            let wr = weightedRandom(options);
+            if (values.indexOf(wr) == -1) {
+                values.push(wr);
+            } else {
+                i--;
+            }
+        }
+        return values;
     }
 
     addYooso(Yooso = '', path = '', action = 'replace') {
@@ -17,6 +53,10 @@ class MoeGirl {
         let pathList = path.split('.');
         let obj = this.moeyooso;
 
+        // if (path == 'personality.superficial') debugger
+
+        let pushed = false;
+
         pathList.forEach(function (e, i) {
             if (obj[e] == undefined) {
                 if (i + 1 >= pathList.length) {
@@ -28,6 +68,7 @@ class MoeGirl {
                         }
                     } else if (action == 'push') {
                         obj[e] = [Yooso];
+                        pushed = true;
                     }
                     return;
                 } else {
@@ -44,41 +85,77 @@ class MoeGirl {
             } else {
                 obj = Yooso;
             }
-        } else if (action == 'push') {
+        } else if (action == 'push' && !pushed) {
             obj.push(Yooso);
         }
     }
 
-    spawn(randomFunction = weightedRandom, randomLoopFunction = weightedRandomLoop) {
+    randomYooso(options, path, action = 'replace') {
+        let rt = this.weightedRandom(options);
+        this.addYooso(rt.name, path, action);
+        if (rt?.wm) {
+            if (rt.wm?.change) {
+                rt.wm.change.forEach(emt => {
+                    let pathList = emt.path.split('.');
+                    let obj = this.dbMoeyooso;
+
+                    pathList.forEach(function (e) {
+                        obj = obj[e];
+                    });
+
+                    let dyi = obj.findIndex(function(obj2) {
+                        return obj2.name == emt.name;
+                    });
+
+                    if (!obj[dyi]?.weight) return;
+                    obj[dyi].weight += emt.value;
+                    if (obj[dyi].weight <= 0) {
+                        obj[dyi].weight = 0;
+                    }
+                });
+            }
+        }
+    }
+
+    randomYoosoLoop(options, path, min = 1, max = 3, outputMin = 1) {
+        let r = ((Math.random() * (max - min)) + min).toFixed(0);
+            if (r < outputMin) r = outputMin;
+            for (let i = 0; i < r; i++) {
+                this.randomYooso(options, path, 'push');
+            }
+    }
+
+    spawn() {
         this.moeyooso = {};
         this.moeyoosoList = [];
+        this.dbMoeyooso = JSON.parse(JSON.stringify(moeyooso));
 
         let h = (Math.random() * 9).toFixed(0) - 4;
-        let height = Number(randomFunction(moeyooso.physique.height));
+        let height = Number(this.weightedRandom(this.dbMoeyooso.physique.height).name);
         height += Number(h);
         this.addYooso(String(height) + 'cm', 'physique.height');
-        this.addYooso(randomFunction(moeyooso.appearance.hairColor), 'appearance.hairColor');
-        this.addYooso(randomFunction(moeyooso.appearance.eyeColor), 'appearance.eyeColor');
-        this.addYooso(randomFunction(moeyooso.appearance.hairstyleBack), 'appearance.hairstyleBack');
-        this.addYooso(randomFunction(moeyooso.appearance.hairstyleFront), 'appearance.hairstyleFront');
-        this.addYooso(randomFunction(moeyooso.appearance.earsType), 'appearance.earsType');
-        this.addYooso(randomFunction(moeyooso.appearance.brassiereCup), 'appearance.brassiereCup');
-        this.addYooso(randomFunction(moeyooso.appearance.skinColor), 'appearance.skinColor');
-        this.addYooso(randomFunction(moeyooso.costume.suit), 'costume.suit');
-        this.addYooso(randomFunction(moeyooso.costume.underwear), 'costume.underwear');
-        this.addYooso(randomFunction(moeyooso.costume.underpants), 'costume.underpants');
-        this.addYooso(randomFunction(moeyooso.costume.swimsuit), 'costume.swimsuit');
-        this.addYooso(randomFunction(moeyooso.costume.hat), 'costume.hat');
-        this.addYooso(randomFunction(moeyooso.costume.eyeglass), 'costume.eyeglass');
-        this.addYooso(randomFunction(moeyooso.costume.socks), 'costume.socks');
-        this.addYooso(randomFunction(moeyooso.costume.shoes), 'costume.shoes');
-        this.addYooso(randomFunction(moeyooso.costume.hairOrnaments), 'costume.hairOrnaments');
-        this.addYooso(randomFunction(moeyooso.costume.faceOrnaments), 'costume.faceOrnaments');
-        this.addYooso(randomFunction(moeyooso.costume.neckOrnaments), 'costume.neckOrnaments');
-        this.addYooso(randomFunction(moeyooso.costume.shoulderOrnaments), 'costume.shoulderOrnaments');
-        this.addYooso(randomFunction(moeyooso.costume.armOrnaments), 'costume.armOrnaments');
-        this.addYooso(randomLoopFunction(moeyooso.personality.superficial), 'personality.superficial');
-        this.addYooso(randomFunction(moeyooso.personality.deep), 'personality.deep');
+        this.randomYooso(this.dbMoeyooso.appearance.hairColor, 'appearance.hairColor');
+        this.randomYooso(this.dbMoeyooso.appearance.eyeColor, 'appearance.eyeColor');
+        this.randomYooso(this.dbMoeyooso.appearance.hairstyleBack, 'appearance.hairstyleBack');
+        this.randomYooso(this.dbMoeyooso.appearance.hairstyleFront, 'appearance.hairstyleFront');
+        this.randomYooso(this.dbMoeyooso.appearance.earsType, 'appearance.earsType');
+        this.randomYooso(this.dbMoeyooso.appearance.brassiereCup, 'appearance.brassiereCup');
+        this.randomYooso(this.dbMoeyooso.appearance.skinColor, 'appearance.skinColor');
+        this.randomYooso(this.dbMoeyooso.costume.suit, 'costume.suit');
+        this.randomYooso(this.dbMoeyooso.costume.underwear, 'costume.underwear');
+        this.randomYooso(this.dbMoeyooso.costume.underpants, 'costume.underpants');
+        this.randomYooso(this.dbMoeyooso.costume.swimsuit, 'costume.swimsuit');
+        this.randomYooso(this.dbMoeyooso.costume.hat, 'costume.hat');
+        this.randomYooso(this.dbMoeyooso.costume.eyeglass, 'costume.eyeglass');
+        this.randomYooso(this.dbMoeyooso.costume.socks, 'costume.socks');
+        this.randomYooso(this.dbMoeyooso.costume.shoes, 'costume.shoes');
+        this.randomYooso(this.dbMoeyooso.costume.hairOrnaments, 'costume.hairOrnaments');
+        this.randomYooso(this.dbMoeyooso.costume.faceOrnaments, 'costume.faceOrnaments');
+        this.randomYooso(this.dbMoeyooso.costume.neckOrnaments, 'costume.neckOrnaments');
+        this.randomYooso(this.dbMoeyooso.costume.shoulderOrnaments, 'costume.shoulderOrnaments');
+        this.randomYooso(this.dbMoeyooso.costume.armOrnaments, 'costume.armOrnaments');
+        this.randomYoosoLoop(this.dbMoeyooso.personality.superficial, 'personality.superficial');
+        this.randomYoosoLoop(this.dbMoeyooso.personality.deep, 'personality.deep');
 
         return this.moeyooso;
     }
