@@ -221,6 +221,7 @@ const moeyooso = {
             {name: '多色瞳',            weight: 0.015}
         ],
         hairstyleBack: [
+            {name: '散发',              weight: 2},
             {name: '马尾',              weight: 5},
             {name: '高马尾',            weight: 3},
             {name: '低马尾',            weight: 2},
