@@ -40,6 +40,12 @@ class MoeGirl {
         return values;
     }
 
+    /**
+     * 添加要素
+     * @param {String|Array<String>} Yooso 要素名称或要素列表
+     * @param {String} [path] 地址
+     * @param {String} [action=replace] 方法
+     */
     addYooso(Yooso = '', path = '', action = 'replace') {
         if (Yooso == '') return;
 
@@ -90,6 +96,12 @@ class MoeGirl {
         }
     }
 
+    /**
+     * 随机要素
+     * @param {Array<Object>} options 要素列表
+     * @param {String} [path] 地址
+     * @param {String} [action=replace] 方法
+     */
     randomYooso(options, path, action = 'replace') {
         let rt = this.weightedRandom(options);
         this.addYooso(rt.name, path, action);
@@ -117,6 +129,14 @@ class MoeGirl {
         }
     }
 
+    /**
+     * 多次随机要素
+     * @param {Array<Object>} options 要素列表
+     * @param {String} [path] 地址
+     * @param {Number} [min=1] 随机次数决定下限
+     * @param {Number} [max=3] 随机次数决定上限
+     * @param {Number} [outputMin=1] 最小随机次数
+     */
     randomYoosoLoop(options, path, min = 1, max = 3, outputMin = 1) {
         let r = ((Math.random() * (max - min)) + min).toFixed(0);
             if (r < outputMin) r = outputMin;
@@ -125,6 +145,10 @@ class MoeGirl {
             }
     }
 
+    /**
+     * 生成
+     * @return {Object} 萌要素数据
+     */
     spawn() {
         this.moeyooso = {};
         this.moeyoosoList = [];

@@ -197,5 +197,72 @@ $(document).ready(function () {
         $('#moeyooso-popup').addClass('hide');
     });
 
+
+    let keyState = {
+        z: false,
+        x: false
+    }
+
+    let timerIndex = 0;
+    let timerState = false;
+    let aicBurstLock = false;
+
+    $(document).keydown(function(e){
+        if (e.keyCode == 90) {
+            keyState.z = true;
+        } else if (e.keyCode == 88) {
+            keyState.x = true;
+        }
+
+        if (keyState.z && keyState.x && !timerState && !aicBurstLock) {
+            timerState = true;
+            $('#aic-burst').attr('class', 'ready');
+            timerIndex = setTimeout(function() {
+                $('#aic-burst').addClass('play');
+                timerIndex = setTimeout(function() {
+                    $('#aic-burst').addClass('done');
+                    $('#moeyooso').addClass('aic-burst');
+                    keyState = {
+                        z: false,
+                        x: false
+                    }
+                    timerState = false;
+                    aicBurstLock = true;
+
+                    moeGirlSpawn();
+
+                    setTimeout(function() {
+                        $('#aic-burst').attr('class', '');
+                        $('#moeyooso').removeClass('aic-burst');
+                        setTimeout(function() {
+                            aicBurstLock = false;
+                        }, 2000);
+                    }, 1000);
+                }, 1500);
+            }, 300);
+        }
+    });
+
+    $(document).keyup(function(e){
+        if (e.keyCode == 90) {
+            keyState.z = false;
+        } else if (e.keyCode == 88) {
+            keyState.x = false;
+        }
+
+        if (!(keyState.z && keyState.x) && timerState && !aicBurstLock) {
+            timerState = false;
+            clearTimeout(timerIndex);
+            $('#aic-burst').attr('class', 'close');
+            aicBurstLock = true;
+            setTimeout(function() {
+                $('#aic-burst').attr('class', '');
+                setTimeout(function() {
+                    aicBurstLock = false;
+                }, 1000);
+            }, 500);
+        }
+    });
+
     moeGirlSpawn();
 });
